@@ -45,12 +45,14 @@ class App extends Component {
             direction: record.wind.deg
           }
         }));
+        this.setState({
+          widgetData: propData.weatherIntervals,
+          userCity: propData.location,
+          loading: false
+        });
 
         console.log(propData);
 
-        this.setState({
-          loading: false
-        });
       });
   };
 
