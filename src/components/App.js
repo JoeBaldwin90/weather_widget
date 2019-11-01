@@ -90,6 +90,7 @@ class App extends Component {
 
     return (
       <Fragment>
+        
         {widgetData.length > 0 ? (
           <Widget
             data={widgetData}

@@ -7,14 +7,14 @@ const Widget = ({ loading, location, data = [], setNewLatLong }) => {
 
   return (
     <Fragment>
-      <div className={`widget-container ${loading ? "loading" : null}`}>
+      <section className={`widget-container ${loading ? "loading" : null}`}>
         <div className="header pa4">
           <div onClick={setNewLatLong} className="location f2 pointer">
             {location.toUpperCase()}
           </div>
           <div className="date f3">{today.date.toUpperCase()}</div>
         </div>
-        <div className="hero pa5 tc">
+        <div className="hero pa4 tc">
           <p className="celcius f1">{today.temperature.toFixed(1)}&#176;</p>
           <img
             src={`http://openweathermap.org/img/wn/${today.icon}@2x.png`}
@@ -46,7 +46,28 @@ const Widget = ({ loading, location, data = [], setNewLatLong }) => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      <section className="later-data">
+        {data.slice(0, 5).map((record, index) => (
+          <div className="mini-record pv1 ph4">
+            <div className="mini-temp">
+              <div className="mr4">+{(index + 1) * 3}h</div>
+              <span>{record.temperature.toFixed(1)}&#176;</span>
+            </div>
+            <div className="mini-stats">
+              <div>{record.description.toUpperCase()}</div>
+              <div>
+                <img
+                  src={`http://openweathermap.org/img/wn/${record.icon}.png`}
+                  alt="Weather Icon"
+                  className="center"
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
     </Fragment>
   );
 };

@@ -1,12 +1,11 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 const Widget = ({ loading, setNewLatLong }) => {
 
     console.log("I'm rendered statically");
 
   return (
-    <Fragment>
-      <div className={`widget-container ${loading ? "loading" : null}`}>
+      <section className={`widget-container ${loading ? "loading" : null}`}>
         <div className="header pa4">
           <div onClick={setNewLatLong} className="location f2">
             LOCATION
@@ -20,7 +19,7 @@ const Widget = ({ loading, setNewLatLong }) => {
             alt="Weather Icon"
             className="weather-icon center"
           />
-          <p className="description center f2">LOADING</p>
+          <p className="description center f2">NO DATA</p>
         </div>
         <div className="weather-info pa4">
           <div className="atmosphere tc">
@@ -42,8 +41,7 @@ const Widget = ({ loading, setNewLatLong }) => {
             </div>
           </div>
         </div>
-      </div>
-    </Fragment>
+      </section>
   );
 };
 
