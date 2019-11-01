@@ -33,7 +33,7 @@ const Widget = ({ loading, setNewLatLong }) => {
                 <div className="f3">0&#176;</div>
               </div>
               <div>
-                <span>DIRECTION</span>
+                <span>SPEED</span>
                 <div className="f3">
                   0<sub>m/s</sub>
                 </div>

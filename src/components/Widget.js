@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import MiniRecord from "./MiniRecord"
 
 const Widget = ({ loading, location, data = [], setNewLatLong }) => {
   const today = data[0];
@@ -37,7 +38,7 @@ const Widget = ({ loading, location, data = [], setNewLatLong }) => {
                 <div className="f3">{today.wind.direction}&#176;</div>
               </div>
               <div>
-                <span>DIRECTION</span>
+                <span>SPEED</span>
                 <div className="f3">
                   {today.wind.speed}
                   <sub>m/s</sub>
@@ -48,24 +49,9 @@ const Widget = ({ loading, location, data = [], setNewLatLong }) => {
         </div>
       </section>
 
-      <section className="later-data">
+      <section className={`later-data ${loading ? "hidden" : null}`}>
         {data.slice(0, 5).map((record, index) => (
-          <div className="mini-record pv1 ph4">
-            <div className="mini-temp">
-              <div className="mr4">+{(index + 1) * 3}h</div>
-              <span>{record.temperature.toFixed(1)}&#176;</span>
-            </div>
-            <div className="mini-stats">
-              <div>{record.description.toUpperCase()}</div>
-              <div>
-                <img
-                  src={`http://openweathermap.org/img/wn/${record.icon}.png`}
-                  alt="Weather Icon"
-                  className="center"
-                />
-              </div>
-            </div>
-          </div>
+          <MiniRecord index={index} temperature={record.temperature} description={record.description} icon={record.icon} />
         ))}
       </section>
     </Fragment>
