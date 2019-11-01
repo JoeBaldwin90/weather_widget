@@ -68,14 +68,15 @@ class App extends Component {
   // getWeather
 
   setNewLatLong = () => {
-    console.log("Button clicked")
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({
         userLatLong: {
           lat: position.coords.latitude,
           long: position.coords.longitude
-        }
+        },
+        loading: true
       });
+      this.getWeather(); 
     });
   };
   // setNewLatLong
