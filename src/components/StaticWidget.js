@@ -1,28 +1,26 @@
 import React, { Fragment } from "react";
 
-const Widget = ({ loading, location, data = [] }) => {
-  
-  const today = data[0];
+const Widget = ({ loading, location }) => {
 
-  console.log("I'm rendered dynamically")
-  
+    console.log("I'm rendered statically");
+
   return (
     <Fragment>
       <div className={`widget-container ${loading ? "loading" : null}`}>
         <div className="header">
           <div className="location">{location}</div>
-          <div className="date">{today.date}</div>
+          <div className="date">01 Jan 1970</div>
         </div>
         <div className="icon">
           <img
-            src={`http://openweathermap.org/img/wn/${today.icon}.png`}
+            src={`http://openweathermap.org/img/wn/02d.png`}
             alt="Weather Icon"
           />
-          <p className="description">{today.description}</p>
+          <p className="description">Loading weather...</p>
         </div>
         <div className="temperature">
-          <div className="celcius">{today.temperature}</div>
-          <div className="humidity">{today.humidity}</div>
+          <div className="celcius">0</div>
+          <div className="humidity">0</div>
         </div>
       </div>
     </Fragment>

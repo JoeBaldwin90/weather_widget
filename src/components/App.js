@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Widget from "./Widget";
+import StaticWidget from "./StaticWidget";
 
 class App extends Component {
   state = {
@@ -56,11 +57,12 @@ class App extends Component {
         }));
         // map temporalData to propData
 
-        this.setState({
+        this.setState((prevState, props) => ({
+          ...prevState,
           widgetData: propData.weatherIntervals,
           userCity: propData.location,
           loading: false
-        });
+        }));
 
         console.log(propData);
       })
@@ -88,10 +90,11 @@ class App extends Component {
 
     return (
       <Fragment>
+        
         {widgetData.length > 0 ? (
           <Widget data={widgetData} location={userCity} loading={loading} />
         ) : (
-          <Widget location={userCity} loading={loading} />
+          <StaticWidget location={userCity} loading={loading} />
         )}
 
         <h1>
