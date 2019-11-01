@@ -10,7 +10,7 @@ class App extends Component {
     userCity: "",
     loading: false
   };
-  //// State
+  // State
 
   componentDidMount() {
     this.setState({
@@ -18,6 +18,14 @@ class App extends Component {
     });
     this.getWeather();
   }
+  // CDM
+
+  convertUnixToDate = unix => {
+    const d = new Date(unix * 1000);
+    const string = d.toString().split(" ");
+    return `${string[0]} ${string[2]} ${string[1]}`;
+  };
+  // convertUnixToDate
 
   getWeather = () => {
     const { lat, long } = this.state.userLatLong;
@@ -33,7 +41,7 @@ class App extends Component {
 
         propData.location = apiData.city.name;
         propData.weatherIntervals = temporalData.map(record => ({
-          date: record.dt,
+          date: this.convertUnixToDate(record.dt),
           icon: record.weather[0].icon,
           description: record.weather[0].description,
           temperature: record.main.temp,
@@ -45,6 +53,8 @@ class App extends Component {
             direction: record.wind.deg
           }
         }));
+        // map temporalData to propData
+
         this.setState({
           widgetData: propData.weatherIntervals,
           userCity: propData.location,
@@ -55,6 +65,7 @@ class App extends Component {
       })
       .catch(error => alert(error));
   };
+  // getWeather
 
   render() {
     return <div>Hello World</div>;
