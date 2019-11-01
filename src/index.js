@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import "tachyons"
 import './css/main.scss';
 import App from './components/App'
 import * as serviceWorker from './serviceWorker';
