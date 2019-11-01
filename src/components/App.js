@@ -90,14 +90,24 @@ class App extends Component {
 
     return (
       <Fragment>
-        
         {widgetData.length > 0 ? (
-          <Widget data={widgetData} location={userCity} loading={loading} />
+          <Widget
+            data={widgetData}
+            location={userCity}
+            loading={loading}
+            setNewLatLong={this.setNewLatLong.bind(this)}
+          />
         ) : (
-          <StaticWidget location={userCity} loading={loading} />
+          <StaticWidget
+            location={userCity}
+            loading={loading}
+            setNewLatLong={this.setNewLatLong.bind(this)}
+          />
         )}
 
-        <button onClick={this.setNewLatLong} className="mt4">Use my location</button>
+        <button onClick={this.setNewLatLong} className="mt4">
+          Use my location
+        </button>
       </Fragment>
     );
   }

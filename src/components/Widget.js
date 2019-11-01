@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-const Widget = ({ loading, location, data = [] }) => {
+const Widget = ({ loading, location, data = [], setNewLatLong }) => {
   const today = data[0];
 
   console.log("I'm rendered dynamically");
@@ -9,7 +9,9 @@ const Widget = ({ loading, location, data = [] }) => {
     <Fragment>
       <div className={`widget-container ${loading ? "loading" : null}`}>
         <div className="header pa4">
-          <div className="location f2">{location.toUpperCase()}</div>
+          <div onClick={setNewLatLong} className="location f2 pointer">
+            {location.toUpperCase()}
+          </div>
           <div className="date f3">{today.date.toUpperCase()}</div>
         </div>
         <div className="hero pa5 tc">
