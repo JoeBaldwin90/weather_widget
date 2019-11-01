@@ -1,0 +1,26 @@
+.widget-container {
+    width: 400px;
+    border-radius: 0.5em;
+    
+    background: rgb(81, 110, 171);
+    background: linear-gradient(15deg, rgba(81, 110, 171, 1) 9%, rgba(41, 197, 246, 1) 100%);
+    
+    box-shadow: 0 8px 6px -6px black;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.weather-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.weather-icon {
+    width: 8em;
+}
+

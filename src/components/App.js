@@ -97,10 +97,7 @@ class App extends Component {
           <StaticWidget location={userCity} loading={loading} />
         )}
 
-        <h1>
-          {this.state.userLatLong.lat} / {this.state.userLatLong.long}
-        </h1>
-        <button onClick={this.setNewLatLong}>Use my location</button>
+        <button onClick={this.setNewLatLong} className="mt4">Use my location</button>
       </Fragment>
     );
   }

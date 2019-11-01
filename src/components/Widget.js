@@ -1,28 +1,48 @@
 import React, { Fragment } from "react";
 
 const Widget = ({ loading, location, data = [] }) => {
-  
   const today = data[0];
 
-  console.log("I'm rendered dynamically")
-  
+  console.log("I'm rendered dynamically");
+
   return (
     <Fragment>
       <div className={`widget-container ${loading ? "loading" : null}`}>
-        <div className="header">
-          <div className="location">{location}</div>
-          <div className="date">{today.date}</div>
+        <div className="header pa4">
+          <div className="location f2">{location.toUpperCase()}</div>
+          <div className="date f3">{today.date.toUpperCase()}</div>
         </div>
-        <div className="icon">
+        <div className="hero pa5 tc">
+          <p className="celcius f1">{today.temperature.toFixed(1)}&#176;</p>
           <img
-            src={`http://openweathermap.org/img/wn/${today.icon}.png`}
+            src={`http://openweathermap.org/img/wn/${today.icon}@2x.png`}
             alt="Weather Icon"
+            className="weather-icon center"
           />
-          <p className="description">{today.description}</p>
+          <p className="description center f2">
+            {today.description.toUpperCase()}
+          </p>
         </div>
-        <div className="temperature">
-          <div className="celcius">{today.temperature}</div>
-          <div className="humidity">{today.humidity}</div>
+        <div className="weather-info pa4">
+          <div className="atmosphere tc">
+            <span>HUMIDITY</span>
+            <div className="humidity f3">{today.humidity}&#37;</div>
+          </div>
+          <div className="wind">
+            <div className="flex row">
+              <div className="mr3">
+                <span>WIND</span>
+                <div className="f3">{today.wind.direction}&#176;</div>
+              </div>
+              <div>
+                <span>DIRECTION</span>
+                <div className="f3">
+                  {today.wind.speed}
+                  <sub>m/s</sub>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Fragment>
