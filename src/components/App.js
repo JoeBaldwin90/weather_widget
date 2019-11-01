@@ -31,7 +31,7 @@ class App extends Component {
     const { lat, long } = this.state.userLatLong;
     const apiKey = "349a4fd78de1c4a4c581588ddfbf45ef";
 
-    const endPoint = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${apiKey}`;
+    const endPoint = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=metric&appid=${apiKey}`;
 
     fetch(endPoint)
       .then(response => response.json())
