@@ -6,8 +6,9 @@ class App extends Component {
       lat: "51.492988",
       long: "-0.167193"
     },
-    loading: false,
-    widgetData: {}
+    widgetData: {},
+    userCity: "",
+    loading: false
   };
   //// State
 
@@ -21,13 +22,12 @@ class App extends Component {
   getWeather = () => {
     const { lat, long } = this.state.userLatLong;
     const apiKey = "349a4fd78de1c4a4c581588ddfbf45ef";
-    
+
     const endPoint = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${apiKey}`;
 
     fetch(endPoint)
       .then(response => response.json())
       .then(apiData => {
-
         const temporalData = apiData.list;
         const propData = {};
 
@@ -52,8 +52,8 @@ class App extends Component {
         });
 
         console.log(propData);
-
-      });
+      })
+      .catch(error => alert(error));
   };
 
   render() {
