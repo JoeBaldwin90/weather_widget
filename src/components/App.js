@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 class App extends Component {
   state = {
@@ -68,7 +68,14 @@ class App extends Component {
   // getWeather
 
   render() {
-    return <div>Hello World</div>;
+    return (
+      <Fragment>
+        <h1>
+          {this.state.userLatLong.lat} / {this.state.userLatLong.long}
+        </h1>
+        <button onClick={this.setNewLatLong}>"Use my location"</button>
+      </Fragment>
+    )
   }
 }
 
