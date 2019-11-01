@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import Widget from "./Widget";
 
 class App extends Component {
   state = {
@@ -6,7 +7,7 @@ class App extends Component {
       lat: "51.492988",
       long: "-0.167193"
     },
-    widgetData: {},
+    widgetData: [],
     userCity: "",
     loading: false
   };
@@ -76,14 +77,23 @@ class App extends Component {
         },
         loading: true
       });
-      this.getWeather(); 
+      this.getWeather(); // Trigger API call once navigator has finished loading + state is updated
     });
   };
   // setNewLatLong
 
   render() {
+
+    const { widgetData, userCity, loading } = this.state
+
     return (
       <Fragment>
+        {widgetData.length > 0 ? (
+          <Widget data={widgetData} location={userCity} loading={loading} />
+        ) : (
+          <Widget location={userCity} loading={loading} />
+        )}
+
         <h1>
           {this.state.userLatLong.lat} / {this.state.userLatLong.long}
         </h1>
